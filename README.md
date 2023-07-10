@@ -1,8 +1,8 @@
 # Murphysec-cli GitHub仓库
 将MurphySec代码安全检测工具集成到代码仓库中，可对每一次代码更新实时进行安全漏洞检测，并快速修复这些安全漏洞。我们目前支持：
 
-- GitHub Actions
-- Gitlab-CI
+- [GitHub Actions](https://github.com/murphysecurity/actions#github-actions)
+- [Gitlab-CI](https://github.com/murphysecurity/actions#gitlab-ci)
 
 
 
