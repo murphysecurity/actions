@@ -1,4 +1,5 @@
 name: "MurphySec code scan"
+Description: "Translation: Software Supply Chain Security Scanning Tool"
 on:
   push:
     branches:
