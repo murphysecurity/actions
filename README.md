@@ -1,20 +1,21 @@
-# Murphysec-cli GitHub仓库
-将MurphySec代码安全检测工具集成到代码仓库中，可对每一次代码更新实时进行安全漏洞检测，并快速修复这些安全漏洞。我们目前支持：
+## 将MurphySec集成至CI/CD流程中实现自动化代码安全检测
+
+将MurphySec代码安全检测工具集成至CI/CD流程中，可对每一次代码更新实时进行安全漏洞检测，并快速修复这些安全漏洞。我们目前支持：
 
 - [GitHub Actions](https://github.com/murphysecurity/actions#github-actions)
 - [Gitlab-CI](https://github.com/murphysecurity/actions#gitlab-ci)
 
 
 
-# GitHub Actions
+## GitHub Actions
 
-## 效果图
+### 效果图
 
 ![img](./assets/1688958577299-15.png)
 
 ![img](./assets/1688958577296-1.png)
 
-## 1.未开启请点击Actions启用GitHub Actions
+### 1.未开启请点击Actions启用GitHub Actions
 
 ![img](./assets/1688958577296-2.png)
 
@@ -22,7 +23,7 @@
 
 ![img](./assets/1688958577297-3.png)
 
-## 2.进入项目页面配置Action权限
+### 2.进入项目页面配置Action权限
 
 点击settings-->Actions-->General-->
 
@@ -34,13 +35,13 @@
 
 ![img](./assets/1688958577297-5.png)
 
-## 3.登录murphysec官网获取token
+### 3.登录murphysec官网获取token
 
 设置-->访问令牌-->点击复制按钮
 
 ![img](./assets/1688958577297-6.png)
 
-## 4.添加MURPHYSEC_TOKEN
+### 4.添加MURPHYSEC_TOKEN
 
 点击仓库settings-->Secrets and variables-->Actons-->New repository secret
 
@@ -50,7 +51,7 @@
 
 ![img](./assets/1688958577297-8.png)
 
-## 5.创建GitHub Actions
+### 5.创建GitHub Actions
 
 点击项目Actions-->New workflows
 
@@ -103,7 +104,7 @@ jobs:
           sarif_file: results.sarif
 ```
 
-## 查看代码检测结果
+### 查看代码检测结果
 
 进入项目页面-->Security-->Code scanning
 
@@ -121,15 +122,15 @@ jobs:
 
 ![img](./assets/1688958577298-14.png)
 
-# Gitlab-CI
+## Gitlab-CI
 
-## 效果图
+### 效果图
 
 ![img](./assets/1688958653361-46.png)
 
 ![img](./assets/1688958653362-47.png)
 
-## 1.部署gitlab-runner
+### 1.部署gitlab-runner
 
 ```Shell
 curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.rpm.sh | sudo bash
@@ -137,7 +138,7 @@ yum install gitlab-runner
 gitlab-runner start
 ```
 
-## 2.查看gitlab-runner令牌
+### 2.查看gitlab-runner令牌
 
 点击管理员选项卡-->点击CI/CD-->Runer-->复制注册令牌
 
@@ -147,7 +148,7 @@ gitlab-runner start
 
 ![img](./assets/1688958653362-50.png)
 
-## 3.注册gitlab-runner
+### 3.注册gitlab-runner
 
 ```Shell
 gitlab-runner register \
@@ -160,13 +161,13 @@ gitlab-runner register \
 --run-untagged \--locked="false"
 ```
 
-## 4.安装murphysec-cli
+### 4.安装murphysec-cli
 
 ```Shell
 wget -q https://s.murphysec.com/release/install.sh -O - | /bin/bash
 ```
 
-## 5.安装python以及依赖
+### 5.安装python以及依赖
 
 - 示例为centos安装python3.6
 
@@ -175,17 +176,17 @@ yum install -y python3 wget
 pip3 install requests argparse python-gitlab
 ```
 
-## 6.创建gitlab-ci变量
+### 6.创建gitlab-ci变量
 
 进入项目仓库-->设置-->CI/CD-->变量
 
 ![img](./assets/1688958653362-51.png)
 
-### 创建gitlab变量
+#### 创建gitlab变量
 
 ![img](./assets/1688958653362-52.png)
 
-### 创建变量
+#### 创建变量
 
 - MURPHYSEC_TOKEN:murphysec官网复制的TOKEN
 
@@ -212,7 +213,7 @@ pip3 install requests argparse python-gitlab
 
 ![img](./assets/1688958653362-56.png)
 
-## 7.创建.gitlab-ci文件
+### 7.创建.gitlab-ci文件
 
 仓库点击加号-->新建文件
 
@@ -245,7 +246,7 @@ issue:
     - scan
 ```
 
-## 8.查看代码检测结果
+### 8.查看代码检测结果
 
 进入项目页面点击议题，页面展示了所有风险组件的漏洞概览
 
