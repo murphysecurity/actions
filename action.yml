@@ -1,5 +1,6 @@
 name: "MurphySec code scan"
 Description: "Translation: Software Supply Chain Security Scanning Tool"
+author: Wei Zhao <aweihooo@163.com>
 on:
   push:
     branches:
