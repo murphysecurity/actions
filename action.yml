@@ -1,14 +1,9 @@
 name: "MurphySec code scan"
 Description: "Software Supply Chain Security Scanning Tool"
-
 inputs:
   command:
     description: "Which Snyk command to run, defaults to test"
     default: test
-on:
-  push:
-    branches:
-      - master
 jobs:
   build:
     runs-on: ubuntu-latest
