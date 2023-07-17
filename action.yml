@@ -16,7 +16,7 @@ jobs:
         run: |
           wget -q https://s.murphysec.com/release/install.sh -O - | /bin/bash
       - name: Code scan
-        run: murphysec  scan . --token ${{ secrets.MURPHYSEC_TOKEN }} --json >scan_results.json
+        run: murphysec  scan . --token $MURPHYSEC_TOKEN --json >scan_results.json
       - name: Format data
         run: | 
           wget https://s.murphysec.com/github_actions_format.py
