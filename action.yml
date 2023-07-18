@@ -2,12 +2,15 @@ name: "MurphySec code scan"
 description: "Software Supply Chain Security Scanning Tool"
 author: "Wei Zhao <aweihooo@163.com>"
 inputs:
-  MURPHYSEC_TOKEN: ${{ secrets.MURPHYSEC_TOKEN }}
+  MURPHYSEC_TOKEN:
     description: "The token should be filled in this field."
     required: true
+    default: test
 runs:
   using: "composite"
   steps:
+    - name: Checkout_Actions
+      uses: actions/checkout@v3
     - run: wget -q https://s.murphysec.com/release/install.sh -O - | /bin/bash
       shell: bash
     - run: murphysec  scan . --token ${{ secrets.MURPHYSEC_TOKEN }} --json >scan_results.json
