@@ -2,7 +2,7 @@ name: "MurphySec code scan"
 description: "Software Supply Chain Security Scanning Tool"
 author: "Wei Zhao <aweihooo@163.com>"
 inputs:
-  MURPHYSEC_TOKEN: ${{ secrets.MURPHYSEC_TOKEN }}
+  MURPHYSEC_TOKEN:
     description: "The token should be filled in this field."
     required: true
     default: test
