@@ -2,15 +2,15 @@ name: "MurphySec code scan"
 description: "Software Supply Chain Security Scanning Tool"
 author: "Wei Zhao <aweihooo@163.com>"
 inputs:
-  MURPHYSEC_TOKEN:
-    description: "Which Snyk command to run, defaults to test"
-    default: test
+  MURPHYSEC_TOKEN: ${{ secrets.MURPHYSEC_TOKEN }}
+    description: "The token should be filled in this field."
+    required: true
 runs:
   using: "composite"
   steps:
     - run: wget -q https://s.murphysec.com/release/install.sh -O - | /bin/bash
       shell: bash
-    - run: echo ${{ inputs.MURPHYSEC_TOKEN }}
+    - run: murphysec  scan . --token ${{ secrets.MURPHYSEC_TOKEN }} --json >scan_results.json
       shell: bash
     - run: wget https://s.murphysec.com/github_actions_format.py && python3 github_actions_format.py
       shell: bash
