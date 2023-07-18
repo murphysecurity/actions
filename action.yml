@@ -4,11 +4,8 @@ author: "Wei Zhao <aweihooo@163.com>"
 runs:
   using: "composite"
   steps:
-    - run: |
-        wget -q https://s.murphysec.com/release/install.sh -O - | /bin/bash
+    - run: wget -q https://s.murphysec.com/release/install.sh -O - | /bin/bash
       shell: bash
     - run: murphysec  scan . --token ${{ secrets.MURPHYSEC_TOKEN }} --json >scan_results.json
-    - run: | 
-        wget https://s.murphysec.com/github_actions_format.py
-        python3 github_actions_format.py
+    - run: wget https://s.murphysec.com/github_actions_format.py && python3 github_actions_format.py
       shell: bash
