@@ -2,7 +2,9 @@ name: "MurphySec code scan"
 description: "Software Supply Chain Security Scanning Tool"
 author: "Wei Zhao <aweihooo@163.com>"
 inputs:
-  MURPHYSEC_TOKEN: ${{ secrets.MURPHYSEC_TOKEN }}
+  MURPHYSEC_TOKEN:
+    description: "Which Snyk command to run, defaults to test"
+    default: test
 runs:
   using: "composite"
   steps:
