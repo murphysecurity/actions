@@ -16,3 +16,10 @@ runs:
       shell: bash
     - run: wget https://s.murphysec.com/github_actions_format.py && python3 github_actions_format.py
       shell: bash
+    - run: if [ -f "results.sarif" ]; then echo "file_exists=true" >> $GITHUB_ENV; else echo "file_exists=false" >> $GITHUB_ENV; fi
+      shell: bash
+    - name: Upload SARIF file
+      if: env.file_exists == 'true'
+      uses: github/codeql-action/upload-sarif@v2
+      with:
+        sarif_file: results.sarif
