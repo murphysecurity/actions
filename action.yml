@@ -1,6 +1,9 @@
 name: "MurphySec code scan"
 description: "Software Supply Chain Security Scanning Tool"
 author: "Wei Zhao <aweihooo@163.com>"
+branding:
+  icon: 'alert-triangle'
+  color: 'green'
 inputs:
   MURPHYSEC_TOKEN:
     description: "The token should be filled in this field."
