@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: MurphySec code scan
-        uses: murphysecurity/actions@v1.1.3
+        uses: murphysecurity/actions@v1
         with:
           MURPHYSEC_TOKEN: ${{ secrets.MURPHYSEC_TOKEN }}
 ```
